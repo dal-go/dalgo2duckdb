@@ -25,10 +25,11 @@ func NewDatabase(path string) (*Database, error) {
 
 // NewDatabaseWithOptions supplies DALgo schema and SQL adapter options.
 func NewDatabaseWithOptions(path string, schema dal.Schema, opts dalgo2sql.DbOptions) (*Database, error) {
-	db, err := sql.Open("duckdb", path)
+	c, err := duckdb.NewConnector(path, nil)
 	if err != nil {
 		return nil, fmt.Errorf("dalgo2duckdb: open: %w", err)
 	}
+	db := sql.OpenDB(connector{c})
 	if err = db.PingContext(context.Background()); err != nil {
 		_ = db.Close()
 		return nil, fmt.Errorf("dalgo2duckdb: connect: %w", err)
@@ -50,6 +51,11 @@ var _ dal.DB = (*Database)(nil)
 // NewReadOnlyDatabase starts a read-only transaction on every physical
 // connection, including replacements after cancellation. Files must use a DSN
 // containing access_mode=read_only; an empty DSN creates an in-memory session.
+// Read-only transactions prevent database writes, but SELECTs can still read
+// external files and URLs. This constructor does not restrict statements sent
+// through the embedded dal.DB or SQLDB. Call ValidateReadQuery before executing
+// untrusted SQL to require exactly one SELECT; resource access requires a
+// separate operator-level authorization decision.
 func NewReadOnlyDatabase(dsn string) (*Database, error) {
 	connector, err := duckdb.NewConnector(dsn, func(execer driver.ExecerContext) error {
 		_, err := execer.ExecContext(context.Background(), "BEGIN TRANSACTION READ ONLY", nil)
@@ -77,8 +83,13 @@ func (d *Database) ValidateReadQuery(ctx context.Context, text string) error {
 	}
 	defer conn.Close()
 	return conn.Raw(func(raw any) error {
-		duck, ok := raw.(*duckdb.Conn)
-		if !ok {
+		var duck *duckdb.Conn
+		switch c := raw.(type) {
+		case *duckdb.Conn:
+			duck = c
+		case *connection:
+			duck = c.Conn
+		default:
 			return fmt.Errorf("dalgo2duckdb: unexpected connection type")
 		}
 		stmt, err := duck.Prepare(text)

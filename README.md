@@ -19,3 +19,10 @@ no preview flag or extension installation is required.
 `SQLDB()` exposes the underlying pool for native operations such as `COPY`.
 This adapter currently provides DALgo's SQL query/transaction surface;
 DuckDB-specific schema introspection and DDL interfaces are not implemented.
+
+`NewReadOnlyDatabase` initializes a read-only SQL transaction on each physical
+connection. It does not classify statements automatically: callers accepting
+SQL text must call `ValidateReadQuery` before execution to require one SELECT.
+SELECT queries can read external files and URLs, so read-only database access
+is not a filesystem or network sandbox. Authorize external resource access
+separately before accepting user queries.

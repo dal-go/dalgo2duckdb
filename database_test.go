@@ -2,6 +2,7 @@ package dalgo2duckdb
 
 import (
 	"context"
+	"database/sql"
 	"github.com/dal-go/dalgo/dal"
 	"path/filepath"
 	"testing"
@@ -48,5 +49,39 @@ func TestReadOnlySingleSelect(t *testing.T) {
 	}
 	if _, err = db.SQLDB().Exec("CREATE TABLE forbidden(id INTEGER)"); err == nil {
 		t.Fatal("read-only connection accepted write")
+	}
+}
+
+func TestReadonlyTransaction(t *testing.T) {
+	db, err := NewDatabase("")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	if err = db.ValidateReadQuery(context.Background(), "SELECT 1"); err != nil {
+		t.Fatal(err)
+	}
+	err = db.RunReadonlyTransaction(context.Background(), func(ctx context.Context, tx dal.ReadTransaction) error {
+		reader, err := tx.ExecuteQueryToRecordsReader(ctx, dal.NewTextQuery("SELECT 42 AS answer", nil))
+		if err != nil {
+			return err
+		}
+		defer reader.Close()
+		_, err = reader.Next()
+		return err
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	raw, err := db.SQLDB().BeginTx(context.Background(), &sql.TxOptions{ReadOnly: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err = raw.Exec("CREATE TABLE forbidden(id INTEGER)"); err == nil {
+		t.Fatal("readonly transaction accepted DDL")
+	}
+	_ = raw.Rollback()
+	if _, err = db.SQLDB().Exec("CREATE TABLE writable(id INTEGER)"); err != nil {
+		t.Fatalf("transaction did not release connection: %v", err)
 	}
 }
