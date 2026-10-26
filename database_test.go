@@ -3,6 +3,7 @@ package dalgo2duckdb
 import (
 	"context"
 	"database/sql"
+	"database/sql/driver"
 	"github.com/dal-go/dalgo/dal"
 	"path/filepath"
 	"testing"
@@ -46,6 +47,15 @@ func TestReadOnlySingleSelect(t *testing.T) {
 	var count int
 	if err = db.SQLDB().QueryRow("SELECT count(*) FROM information_schema.tables WHERE table_name='forbidden'").Scan(&count); err != nil || count != 0 {
 		t.Fatalf("side effect count=%d err=%v", count, err)
+	}
+	conn, err := db.SQLDB().Conn(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	_ = conn.Raw(func(any) error { return driver.ErrBadConn })
+	_ = conn.Close()
+	if err = db.ValidateReadQuery(context.Background(), "SELECT 1"); err != nil {
+		t.Fatal(err)
 	}
 	if _, err = db.SQLDB().Exec("CREATE TABLE forbidden(id INTEGER)"); err == nil {
 		t.Fatal("read-only connection accepted write")
