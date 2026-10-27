@@ -3,13 +3,13 @@ module github.com/dal-go/dalgo2duckdb
 go 1.26.0
 
 require (
-	github.com/dal-go/dalgo v0.95.2
+	github.com/dal-go/dalgo v0.95.4
 	github.com/dal-go/dalgo2sql v0.29.7
 	github.com/duckdb/duckdb-go/v2 v2.10503.1
 )
 
 require (
-	github.com/RoaringBitmap/roaring/v2 v2.29.0 // indirect
+	github.com/RoaringBitmap/roaring/v2 v2.30.0 // indirect
 	github.com/apache/arrow-go/v18 v18.5.1 // indirect
 	github.com/bits-and-blooms/bitset v1.24.6 // indirect
 	github.com/dal-go/record v0.1.5 // indirect
