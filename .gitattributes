@@ -1,0 +1,6 @@
+# Go's module tidiness check compares bytes; keep module files LF on Windows.
+* text=auto
+go.mod text eol=lf
+go.sum text eol=lf
+*.go text eol=lf
+*.yml text eol=lf
