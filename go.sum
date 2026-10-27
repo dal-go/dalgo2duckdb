@@ -1,7 +1,7 @@
 github.com/DATA-DOG/go-sqlmock v1.5.2 h1:OcvFkGmslmlZibjAjaHm3L//6LiuBgolP7OputlJIzU=
 github.com/DATA-DOG/go-sqlmock v1.5.2/go.mod h1:88MAG/4G7SMwSE3CeA0ZKzrT5CiOU3OJ+JlNzwDqpNU=
-github.com/RoaringBitmap/roaring/v2 v2.29.0 h1:jSjxqZEqiF9W5dHUFsemupb9bnLaQJwZVe5yMetbsZg=
-github.com/RoaringBitmap/roaring/v2 v2.29.0/go.mod h1:BZufmFbox589n3j5eOmyTaLSGXbRLc2LmQvjKjzSEGU=
+github.com/RoaringBitmap/roaring/v2 v2.30.0 h1:1sD4xsCenNd9n/gOWaExCWanP9WTyiNuqLAvaDQ5jkY=
+github.com/RoaringBitmap/roaring/v2 v2.30.0/go.mod h1:BZufmFbox589n3j5eOmyTaLSGXbRLc2LmQvjKjzSEGU=
 github.com/andybalholm/brotli v1.2.0 h1:ukwgCxwYrmACq68yiUqwIWnGY0cTPox/M94sVwToPjQ=
 github.com/andybalholm/brotli v1.2.0/go.mod h1:rzTDkvFWvIrjDXZHkuS16NPggd91W3kUSvPlQ1pLaKY=
 github.com/apache/arrow-go/v18 v18.5.1 h1:yaQ6zxMGgf9YCYw4/oaeOU3AULySDlAYDOcnr4LdHdI=
@@ -12,8 +12,8 @@ github.com/bits-and-blooms/bitset v1.24.6 h1:qcrftZUVBIwfs+m+nhoCBAPT+ZPZZjti8Sb
 github.com/bits-and-blooms/bitset v1.24.6/go.mod h1:7hO7Gc7Pp1vODcmWvKMRA9BNmbv6a/7QIWpPxHddWR8=
 github.com/cockroachdb/cockroach-go/v2 v2.2.0 h1:/5znzg5n373N/3ESjHF5SMLxiW4RKB05Ql//KWfeTFs=
 github.com/cockroachdb/cockroach-go/v2 v2.2.0/go.mod h1:u3MiKYGupPPjkn3ozknpMUpxPaNLTFWAya419/zv6eI=
-github.com/dal-go/dalgo v0.95.2 h1:1Q8+galIb4z3mcgrkDAmPbKCnwxNMhzlZvJuxylrvCA=
-github.com/dal-go/dalgo v0.95.2/go.mod h1:D0eryUAzC1TZhFTGT3BJS+AOjaiHMrbgrfl6Hsxt8ak=
+github.com/dal-go/dalgo v0.95.4 h1:AjfaI7S/dreCfmZL8ybcahBlm8l8XVuJ25ZVLorfxxs=
+github.com/dal-go/dalgo v0.95.4/go.mod h1:UCGV7G50rWbXamWXbmbBGmHiACWtNYUFNIL+qM5AAs8=
 github.com/dal-go/dalgo2sql v0.29.7 h1:IPTLI3TP/WY9ldusfgIGNP7Zcmwle1Y9dDaA/7+e6A8=
 github.com/dal-go/dalgo2sql v0.29.7/go.mod h1:RU60NYTU0ao5iAuWcoBfbGabr0UAR6N9kSS7XCFVPEA=
 github.com/dal-go/record v0.1.5 h1:lkPxiJA7S2oE5tA0WUayezd+lmaiEekrEcGz/HRhzLg=
@@ -68,8 +68,8 @@ github.com/jackc/puddle/v2 v2.0.0 h1:Kwk/AlLigcnZsDssc3Zun1dk1tAtQNPaBBxBHWn0Mjc
 github.com/jackc/puddle/v2 v2.0.0/go.mod h1:itE7ZJY8xnoo0JqJEpSMprN0f+NQkMCuEV/N9j8h0oc=
 github.com/klauspost/asmfmt v1.3.2 h1:4Ri7ox3EwapiOjCki+hw14RyKk201CN4rzyCJRFLpK4=
 github.com/klauspost/asmfmt v1.3.2/go.mod h1:AG8TuvYojzulgDAMCnYn50l/5QV3Bs/tp6j0HLHbNSE=
-github.com/klauspost/compress v1.18.3 h1:9PJRvfbmTabkOX8moIpXPbMMbYN60bWImDDU7L+/6zw=
-github.com/klauspost/compress v1.18.3/go.mod h1:R0h/fSBs8DE4ENlcrlib3PsXS61voFxhIs2DeRhCvJ4=
+github.com/klauspost/compress v1.18.7 h1:aUyZsS4kH3QTKurYhAOwAHxllVPnOthb3vPfnF1Ehjw=
+github.com/klauspost/compress v1.18.7/go.mod h1:cwPg85FWrGar70rWktvGQj8/hthj3wpl0PGDogxkrSQ=
 github.com/klauspost/cpuid/v2 v2.3.0 h1:S4CRMLnYUhGeDFDqkGriYKdfoFlDnMtqTiI/sFzhA9Y=
 github.com/klauspost/cpuid/v2 v2.3.0/go.mod h1:hqwkgyIinND0mEev00jJYCxPNVRVXFQeu1XKlok6oO0=
 github.com/lib/pq v1.10.0 h1:Zx5DJFEYQXio93kgXnQ09fXNiUKsqv4OUEu2UtGcB1E=
