@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/dal-go/dalgo v0.95.4
-	github.com/dal-go/dalgo2sql v0.29.7
+	github.com/dal-go/dalgo2sql v0.31.1
 	github.com/duckdb/duckdb-go/v2 v2.10503.1
 )
 
