@@ -3,8 +3,8 @@ module github.com/dal-go/dalgo2duckdb
 go 1.26.0
 
 require (
-	github.com/dal-go/dalgo v0.95.4
-	github.com/dal-go/dalgo2sql v0.29.7
+	github.com/dal-go/dalgo v0.99.0
+	github.com/dal-go/dalgo2sql v0.32.2
 	github.com/duckdb/duckdb-go/v2 v2.10503.1
 )
 
@@ -45,5 +45,5 @@ require (
 	modernc.org/libc v1.79.0 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.12.1 // indirect
-	modernc.org/sqlite v1.61.0 // indirect
+	modernc.org/sqlite v1.61.1 // indirect
 )
