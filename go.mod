@@ -3,7 +3,7 @@ module github.com/dal-go/dalgo2duckdb
 go 1.26.0
 
 require (
-	github.com/dal-go/dalgo v0.102.6
+	github.com/dal-go/dalgo v0.104.0
 	github.com/dal-go/dalgo2sql v0.32.7
 	github.com/duckdb/duckdb-go/v2 v2.10503.1
 )
